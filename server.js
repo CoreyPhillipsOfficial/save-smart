@@ -1,24 +1,37 @@
-// Import express
-const express = require('express');
-const db = require('./config/connection')
-
-
-const User = require('./models/User');
+const express = require("express");
 // // Import our view_routes
-// const view_routes = require('./controllers/view_routes');
-// const user_routes = require('./controllers/user_routes');
+// const { view_routes, user_routes } = require('./controllers');
+const db = require('./config/connection')
+const session = require('express-session');
+const { engine } = require("express-handlebars");
 
 // Create the port number and prepare for heroku with the process.env.PORT value
 const PORT = process.env.PORT || 3333;
 
+
 // Create the server app
 const app = express();
 
-// Open the static channel for our browser assets - ie. express.static on the public folder
-app.use(express.static('./public'));
+
+const User = require('./models/User');
+
+
+// Set up Handlebars as the view engine
+app.engine(".hbs", engine({extname: 'hbs'}))
+app.set("view engine", "hbs");
+app.set('views', './views')
+
 
 // Allow JSON to be sent from the client
-app.use(express.json());
+app.use(express.json())
+
+// Open the static channel for our browser assets - ie. express.static on the public folder
+app.use(express.static('public'));
+app.use(session({
+    secret: 'Chunky cat',
+    resave: false,
+    saveUninitialized: true
+}));
 
 
 // // Load our view routes at the root level '/'
@@ -27,11 +40,7 @@ app.use(express.json());
 // // Load our user routes at the root level '/'
 // app.use('/auth', user_routes);
 
-// app.use('/auth', user_routes);
 
-// Sync and create tables
-db.sync({force: true})
-.then(() => {
-  // Start the server and log the port that it started on
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+db.sync().then(() => {
+    app.listen(PORT, () => console.log("Server is running on port", PORT));
 })
