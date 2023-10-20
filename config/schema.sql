@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS save_smart_db;
-CREATE DATABASE save_smart_db;
+DROP DATABASE IF EXISTS saveSmart_db;
+CREATE DATABASE saveSmart_db;
