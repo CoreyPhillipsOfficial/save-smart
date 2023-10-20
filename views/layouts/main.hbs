@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$ave $mart</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <header class="row justify-between align-center">
+    <a href="/assets/money-send-svgrepo-com.svg">
+    </a>
+
+    <nav class="row align-center">
+      {{#if user}}
+        <p>Welcome, {{user.email}}</p>
+        <a class="{{#if profile}}active{{/if}}" href="/profile">Profile</a>
+        <a class="{{#if coo_form}}active{{/if}}" href="/coo">Post a Coo</a>
+        <a href="/auth/logout">Log Out</a>
+      {{else}}
+        <a class="{{#if register}}active{{/if}}" href="/register">Register</a>
+        <span>or</span>
+        <a class="{{#if login}}active{{/if}}" href="/login">Login</a>
+      {{/if}}
+    </nav>
+  </header>
+
+  {{{body}}}
+</body>
+
+</html>
