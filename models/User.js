@@ -47,5 +47,5 @@ User.init({
   // }
 });
 
-// Export the User model
+// Export the User model just because
 module.exports = User;
