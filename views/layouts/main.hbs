@@ -21,12 +21,21 @@
     </div>
     <nav>
       <ul>
+         {{#if user}}
         <li><a class="header_tabs" href="/">Home</a></li>
         <li><a class="header_tabs" href="/about">About</a></li>
-        <li><a class="header_tabs" href="/goals_forms">Goal</a></li>
-        <li><a class="header_tabs" href="/auth/login">Log-In</a></li>
-        <li><a class="header_tabs" href="/auth/register">Register</a></li>
+         <li><a class="header_tabs" href="/auth/logout">Log Out</a></li>
+
+         {{else}}
+         <li><a class="header_tabs" href="/">Home</a></li>
+        {{!-- <li><a class="header_tabs" href="/goals_forms">Goal</a></li>  --}}
+        <li><a class="header_tabs" href="/about">About</a></li>
+        <li><a class="header_tabs" href="/login">Log-In</a></li>
+        <li><a class="header_tabs" href="/register">Register</a></li>
+        {{/if}}
       </ul>
+
+
     </nav>
 
   </header>

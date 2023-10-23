@@ -1,5 +1,5 @@
+// Create an express router instance object
 const router = require('express').Router();
-
 const User = require('../models/User');
 
 
@@ -41,8 +41,39 @@ async function authenticate(req, res, next) {
 // landing page
 router.get('/', authenticate, async (req, res) => {
   
-  res.render('landing'); 
+  res.render('goals', {user: req.user}); 
 });
+
+
+// GET route to show the register form
+router.get('/register', isLoggedIn, authenticate, (req, res) => {
+    // Render the register form template
+    res.render('register', {
+      errors: req.session.errors,
+      user: req.user
+    });
+    req.session.errors = [];
+  });
+
+
+  // GET route to show the login form
+router.get('/login', isLoggedIn, authenticate, (req, res) => {
+    // Render the register form template
+    res.render('login', {
+      errors: req.session.errors,
+      user: req.user
+    });
+    req.session.errors = [];
+  });
+
+//   // Show Goals Page
+// router.get('/', isAuthenticated, authenticate, (req, res) => {
+//   res.render('goals_form', {
+//     user: req.user
+//   });
+
+//   req.session.errors = [];
+// });
 
 // Export the router
 module.exports = router;
