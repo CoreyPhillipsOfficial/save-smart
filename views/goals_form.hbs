@@ -1,0 +1,13 @@
+<form action="/auth/goal" method="POST">
+
+  <div class="container">
+
+    {{#each errors}}
+    <p class="error">{{this}}</p>
+    {{/each}}
+<h1>Create a new goal!</h1>
+    <input class="form-email" type="text" name="goalName" placeholder="Please enter your Goal Name" required>
+    <input class="form-pass" type="text" name="goalAmount" placeholder="Please enter your Goal Amount" required>
+    <input class="form-pass" type="text" name="goalAmount" placeholder="How much do you have saved up right now?" required>
+    <button class="form-btn">Create Goal</button>
+  </div>

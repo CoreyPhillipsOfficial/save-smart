@@ -56,7 +56,7 @@ router.get('/register', isLoggedIn, authenticate, (req, res) => {
   });
 
 
-  // GET route to show the login form
+  // login page
 router.get('/login', isLoggedIn, authenticate, (req, res) => {
     // Render the register form template
     res.render('login', {
@@ -66,14 +66,16 @@ router.get('/login', isLoggedIn, authenticate, (req, res) => {
     req.session.errors = [];
   });
 
-//   // Show Goals Page
-// router.get('/', isAuthenticated, authenticate, (req, res) => {
-//   res.render('goals_form', {
-//     user: req.user
-//   });
+  router.get('/goals', isAuthenticated, authenticate, (req, res) => {
+    res.render('goals', {
+      user: req.user
+    });
+  
+    req.session.errors = [];
+  });
 
-//   req.session.errors = [];
-// });
+  
+
 
 // Export the router
 module.exports = router;

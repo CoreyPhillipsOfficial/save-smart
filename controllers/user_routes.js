@@ -8,6 +8,7 @@ router.post('/register', async (req, res) => {
  
   try {
     const user = await User.create(req.body);
+    
 
 
     req.session.user_id = user.id;
@@ -37,7 +38,7 @@ router.post('/login', async (req, res) => {
   }
 
   const passIsValid = await user.validatePass(req.body.password);
-  console.log(passIsValid);
+ 
   //  Check if pw is invalid
   if(!passIsValid) {
     req.session.errors = ['Password is incorrect.'];
@@ -47,8 +48,8 @@ router.post('/login', async (req, res) => {
 
   // Log the user in
   req.session.user_id = user.id;
-console.log(user)
-  res.redirect('/')
+
+  res.redirect('/goals')
 });
 
 router.get('/logout', (req, res) => {
