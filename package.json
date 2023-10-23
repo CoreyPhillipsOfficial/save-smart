@@ -19,6 +19,7 @@
     "express-session": "^1.17.3",
     "method-override": "^3.0.0",
     "mysql2": "^3.6.2",
+    "pexels": "^1.4.0",
     "sequelize": "^6.33.0"
   },
   "devDependencies": {
