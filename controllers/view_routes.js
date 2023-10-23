@@ -41,7 +41,7 @@ async function authenticate(req, res, next) {
 // landing page
 router.get('/', authenticate, async (req, res) => {
   
-  res.render('landing'); 
+  res.render('landing', {user: req.user}); 
 });
 
 
@@ -65,6 +65,15 @@ router.get('/login', isLoggedIn, authenticate, (req, res) => {
     });
     req.session.errors = [];
   });
+
+//   // Show Goals Page
+// router.get('/', isAuthenticated, authenticate, (req, res) => {
+//   res.render('goals_form', {
+//     user: req.user
+//   });
+
+//   req.session.errors = [];
+// });
 
 // Export the router
 module.exports = router;
