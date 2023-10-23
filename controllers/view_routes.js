@@ -41,7 +41,7 @@ async function authenticate(req, res, next) {
 // landing page
 router.get('/', authenticate, async (req, res) => {
   
-  res.render('goals', {user: req.user}); 
+  res.render('landing', {user: req.user}); 
 });
 
 
