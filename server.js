@@ -43,8 +43,8 @@ app.set('view engine', '.hbs');
 
 
 // Sync and create tables
-// db.sync({force: false})
-// .then(() => {
+db.sync({force: false})
+.then(() => {
   // Start the server and log the port that it started on
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
-// });
+});

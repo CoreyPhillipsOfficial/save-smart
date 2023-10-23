@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+header {
+    height: 60px;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.logo {
+    margin-left: 10px;
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+}
+
+.title-container {
+    flex: 1;
+    text-align: center; 
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+h1 {
+    color: #DBB3B3;
+    font-weight: 500;
+    font-size: 50px;
+    margin: 0;
+    /* padding: 0; */
+    margin-left: 225px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: inline;
+    margin-left: 10px;
+}
+
+.header_tabs {
+    text-decoration: none;
+    color: #DBB3B3;
+}
+
+body {
+    height: 100vh;
+    background-image: url(/assets/hero-background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.hero_text_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end; /* Right-align the content */
+    /* height: 100vh; */
+    padding: 0 16px; /* Add padding for spacing */
+}
+
+.text-wrapper {
+    width: 650px;
+    padding-top: 100px;
+    margin-right: 0; /* Remove the right margin to push the text to the right */
+}
+
+
+
+.hero_text {
+    color: black;
+    margin-bottom: 10px;
+    font-size: 30px;
+  }
+
+.container {
+  width: 630px;
+  padding-top: 100px;
+  margin: 0 auto;
+  text-align: center;
+  /* background-color: ; */
+}
+
+input[type=text], input[type=password]{
+    width: 600px;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: block;
+    border: none;
+    border-radius: 20px;
+    background: white;
+} 
+
+.form-btn {
+    background-color: black;
+    color: #DBB3B3;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: 2px solid #eee;
+    cursor: pointer;
+    width: 400px;
+    height: 58px;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+input[type=text]:focus, input[type=password]:focus{
+    background-color: #ddd;
+}
