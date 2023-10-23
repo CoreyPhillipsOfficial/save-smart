@@ -6,26 +6,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>$ave $mart</title>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
-  <header class="row justify-between align-center">
-    <a href="/assets/money-send-svgrepo-com.svg">
-    </a>
+  <header>
+    <a href="/"><img src="/assets/money-send-svgrepo-com.svg" class="logo" alt="logo"></a>
 
-    <nav class="row align-center">
-      {{#if user}}
-        <p>Welcome, {{user.email}}</p>
-        <a class="{{#if profile}}active{{/if}}" href="/profile">Profile</a>
-        <a class="{{#if coo_form}}active{{/if}}" href="/coo">Post a Coo</a>
-        <a href="/auth/logout">Log Out</a>
-      {{else}}
-        <a class="{{#if register}}active{{/if}}" href="/register">Register</a>
-        <span>or</span>
-        <a class="{{#if login}}active{{/if}}" href="/login">Login</a>
-      {{/if}}
+    <div class="title-container">
+      <h1>$ave-$mart</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a class="header_tabs" href="/">Home</a></li>
+        <li><a class="header_tabs" href="/about">About</a></li>
+        <li><a class="header_tabs" href="/goals_forms">Goal</a></li>
+        <li><a class="header_tabs" href="/auth/login">Log-In</a></li>
+        <li><a class="header_tabs" href="/auth/register">Register</a></li>
+      </ul>
     </nav>
+
   </header>
+
 
   {{{body}}}
 </body>
