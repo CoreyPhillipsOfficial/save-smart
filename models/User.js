@@ -1,13 +1,13 @@
 // Import Model and DataTypes from sequelize
 const { Model, DataTypes } = require('sequelize');
-
 const db = require('../config/connection');
 
-// If we use BCRYPT, bring in package
 const { hash, compare } = require('bcrypt');
 
 // Create a User class and extend the Model class
-class User extends Model { }
+class User extends Model { };
+
+const Goal = require('./Goal');
 
 // Call User.init and setup a couple columns/fields - username & password as text strings
 User.init({
@@ -47,6 +47,9 @@ User.prototype.validatePass = async function (formPassword) {
 
   return isValid;
 }
+
+User.hasMany(Goal, { as: 'goals', foreignKey: 'author_id' });
+Goal.belongsTo(User, { as: 'author', foreignKey: 'author_id' });
 
 // Export the User model just because
 module.exports = User;

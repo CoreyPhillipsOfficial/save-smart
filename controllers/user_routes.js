@@ -27,7 +27,8 @@ router.post('/login', async (req, res) => {
       username: req.body.username
     }
   });
-
+  
+ 
   // User not found with the username provided
   if(!user) {
     req.session.errors = ['No user found with that username'];
@@ -36,17 +37,17 @@ router.post('/login', async (req, res) => {
   }
 
   const passIsValid = await user.validatePass(req.body.password);
-
+  console.log(passIsValid);
   //  Check if pw is invalid
   if(!passIsValid) {
-    req.session.errors = ['Password is incorrerect.'];
+    req.session.errors = ['Password is incorrect.'];
 
     return res.redirect('/login');
   }
 
   // Log the user in
   req.session.user_id = user.id;
-
+console.log(user)
   res.redirect('/')
 });
 
@@ -55,5 +56,6 @@ router.get('/logout', (req, res) => {
 
   res.redirect('/');
 })
+
 
 module.exports = router;

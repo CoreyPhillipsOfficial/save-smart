@@ -34,16 +34,15 @@ app.use(session({
     saveUninitialized: true
   }))
 
-  // Load our view routes at the root level '/'
-app.use('/', view_routes);
-
-
 // Set up Handlebars as the view engine
 app.engine('.hbs', engine({extname: '.hbs'}));
 app.set('view engine', '.hbs');
 
 // Load our user routes at the root level '/'
 app.use('/auth', user_routes);
+
+// Load our view routes at the root level '/'
+app.use('/', view_routes);
 
 // Sync and create tables
 db.sync({force: false})
