@@ -31,10 +31,12 @@ app.use(methodOverride('_method'));
 
 // Load express-session middleware
 app.use(session({
-    secret: 'someSecretKey',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true
   }))
+
+
 
 // Set up Handlebars as the view engine
 app.engine('.hbs', engine({extname: '.hbs'}));
