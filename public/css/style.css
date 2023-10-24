@@ -294,3 +294,22 @@ input[type=password]:focus {
 .goal_view_wrap > p {
     margin-bottom: 15px;
 }
+
+/* Edit Form Styles */
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.edit-form > * {
+    padding: 4px 8px;
+    margin: 4px 0;
+    border: none;
+    outline: none;
+}
+
+.edit-form h3 {
+    color: #fff;
+}
