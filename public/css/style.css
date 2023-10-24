@@ -311,5 +311,159 @@ input[type=password]:focus {
 }
 
 .edit-form h3 {
-    color: #fff;
+    color: #fff;   
+}
+
+
+
+
+@media screen and (max-width: 1055px) {
+    .no_goals_form {
+        width: 800px;
+        height: 600px;
+    }
+    .no_goals_title {
+        font-size: 100px;
+    }
+    .current_goal {
+        width: 800px;
+        height: 600px;
+    }
+}
+
+
+@media screen and (max-width: 830px) {
+    .no_goals_form {
+        width: 700px;
+        height: 400px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .no_goals_title {
+        font-size: 85px;
+    }
+    .goals_button {
+        width: 275px;
+        height: 50px;
+        font-size: 25px;
+    }
+}
+@media screen and (max-width: 730px) {
+    h1 {
+        margin: 0 auto;
+        font-size: 40px;
+    }
+    .no_goals_form {
+        width: 600px;
+        height: 350px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .hero_text_container {
+        display: block;
+        width: 500px;
+        
+    }
+    .text-wrapper {
+        width: auto;
+    }
+    .hero_text {
+        width: auto;
+    }
+
+    form {
+        display: flex;
+        width: auto;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .container {
+        width: auto;
+    }
+    .container > input {
+        width: 500px;
+    }
+    .form-btn{
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .no_goals_form {
+        width: 500px;
+        height: 300px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .no_goals_title {
+        font-size: 75px;
+    }
+}
+
+
+@media screen and (max-width: 530px) {
+    h1 {
+        margin: 0 auto;
+        font-size: 30px;
+    }
+
+    ul > li {
+        margin: 0 auto;
+    }
+
+    .no_goals_form {
+        width: 400px;
+        height: 250px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .no_goals_title {
+        font-size: 60px;
+    }
+    .goals_button {
+        width: 200px;
+        height: 50px;
+    }
+    .hero_text_container{
+        width: auto;
+    }
+    .hero_text {
+        font-size: 30px;
+    }
+    .text-wrapper {
+        width: 400px;
+    }.container > input {
+        width: 300px;
+    }
+    .form-btn{
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    header {
+        height: 40px;
+    }
+   .title-container {
+    display: none;
+   }
+   nav {
+    width: auto;
+   }
+   .no_goals_title {
+    font-size: 50px;
+}
+.text-wrapper{
+    width: 300px;
+}
+.hero_text {
+    font-size: 25px;
+}
+}
+
+@media screen and (max-width: 400px) {
+    .no_goals_form {
+        width: 300px;
+    }
 }
