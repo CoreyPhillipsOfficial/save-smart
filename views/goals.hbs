@@ -7,14 +7,18 @@
             <div>
                 <p class="current_info" style="height: 45px;">Current Balance: ${{this.currentAmount}}</p>
             </div>
-            <div><a href="/editBalance/{{id}}"><button >Update</button></div></a>
+            <form class="edit-form" action="/editBalance/{{id}}?_method=PUT" method="POST">
+                <h3>Add To Balance</h3>
+                <input type="number" name="amount">
+                <button>Submit</button>
+            </form>
             <div>
                 <p id="difference" class="current_info_left" style="height: 45px;">How much left: {{this.balance}}$</p>
             </div>
         </div>
 
         <div class="goal_view_wrap">
-            <h2>{{this.goalName}}</h2>
+            <h2 class="goal-name-output">{{this.goalName}}</h2>
             <img id="item" class="photo" alt="Item" src="">
             <p>{{this.goalAmount}}$</p>
         </div>
@@ -34,3 +38,6 @@
     </a>
 </div>
 {{/if}}
+
+
+<script src="/js/goals.js"></script>

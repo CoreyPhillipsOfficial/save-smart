@@ -1,49 +1,29 @@
-const searchPhotos = () => {
-    const query = document.getElementById('goal').value;
-    // const query = 'car';
-    const itemElement = document.getElementById('item');
-  
-    fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=1`, {
-      headers: {
-        Authorization: 'dSBGzPie66IdXR0BGNdj8gmNKqI0ikHPBFYTcsKMOd7sVFTaA3Le7LEo'
-      }
-    })
-      .then(response => response.json())
-      .then(data => {
-        const photos = data.photos;
-        if (photos.length > 0) {
-          const photo = photos[0];
-          const photoUrl = photo.src.original;
-          if (itemElement) {
-            itemElement.src = photoUrl; // Update the src attribute
-          } else {
-            console.error("Element with ID 'item' not found in the HTML.");
-          }
-        } else {
-          console.error('No photos found for the query.');
-        }
-      })
-      .catch(error => {
-        console.error('Error fetching photos:', error);
-      });
-  };
-  
-  // Call searchPhotos() when needed, e.g., in response to an event or page load
-//   searchPhotos();
+const queries = $('.goal-name-output');
 
-// Attach an event listener to the search button or form submission
-// Replace 'searchButton' with the ID or class of your search button or form
+async function outputPexelImage(query, imgEl) {
+  const {photos} = await fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=1`, {
+    headers: {
+      Authorization: 'dSBGzPie66IdXR0BGNdj8gmNKqI0ikHPBFYTcsKMOd7sVFTaA3Le7LEo'
+    }
+  }).then(response => response.json());
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Your code here
-  var element = document.querySelector("#item");
-  if (element) {
-      element.addEventListener("submit", function () {
-          // Your event handling code
-      });
+  if (photos.length) {
+    return imgEl.attr('src', photos[0].src.small);
   }
-});
 
+  imgEl.attr('src', 'https://placehold.co/600x400');
+}
+
+function init() {
+  queries.each((_, q) => {
+    const nameEl = $(q);
+    const imgEl = nameEl.next();
+
+    outputPexelImage($(q).text(), imgEl)
+  });
+}
+
+init();
 
 
 
@@ -159,3 +139,43 @@ document.addEventListener("DOMContentLoaded", function () {
 // });
 
 
+// const searchPhotos = () => {
+
+//     // const query = 'car';
+  
+    
+//       .then(data => {
+//   const photos = data.photos;
+//   console.log(photos);
+//   if (photos.length > 0) {
+//     const photo = photos[0];
+//     const photoUrl = photo.src.original;
+//     if (itemElement) {
+//       itemElement.src = photoUrl; // Update the src attribute
+//     } else {
+//       console.error("Element with ID 'item' not found in the HTML.");
+//     }
+//   } else {
+//     console.error('No photos found for the query.');
+//   }
+// })
+//   .catch(error => {
+//     console.error('Error fetching photos:', error);
+//   });
+//   };
+
+// // Call searchPhotos() when needed, e.g., in response to an event or page load
+// //   searchPhotos();
+
+// // Attach an event listener to the search button or form submission
+// // Replace 'searchButton' with the ID or class of your search button or form
+
+// document.addEventListener("DOMContentLoaded", function () {
+//   // Your code here
+//   var element = document.querySelector("#item");
+//   if (element) {
+//     element.addEventListener("submit", function () {
+//       // Your event handling code
+//     });
+//   }
+// });
