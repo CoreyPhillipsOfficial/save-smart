@@ -27,7 +27,6 @@ header {
     text-align: center;
     display: flex;
     justify-content: center;
-    /* align-items: center; */
 }
 
 h1 {
@@ -35,7 +34,6 @@ h1 {
     font-weight: 500;
     font-size: 50px;
     margin: 0;
-    /* padding: 0; */
     margin-left: 130px;
 }
 
@@ -66,7 +64,6 @@ body {
     background-image: url(/assets/hero-background.jpg);
     background-size: cover;
     background-position: center;
-    /* background-repeat: no-repeat; */
 }
 
 .hero_text_container {
@@ -77,14 +74,12 @@ body {
     /* Right-align the content */
     /* height: 100vh; */
     padding: 0 16px;
-    /* Add padding for spacing */
 }
 
 .text-wrapper {
     width: 650px;
     padding-top: 100px;
     margin-right: 0;
-    /* Remove the right margin to push the text to the right */
 }
 
 
@@ -133,8 +128,9 @@ input[type=password]:focus {
 }
 
 .photo {
-    max-height: 200px;
-    max-width: 200px;
+    max-height: 300px;
+    max-width: 300px;
+    border-radius: 10px;
 }
 
 .goals_wrap {
@@ -216,17 +212,24 @@ input[type=password]:focus {
     justify-content: space-between;
     border-radius: 25px;
     margin: 50px;
+    align-items: center;
+}
+
+.goal_view_wrap > p {
+    background-color: #DBB3B3;
+    border-radius: 3px;
+}
+
+.goal_view_wrap > h4 {
+    text-decoration: underline;
 }
 
 .left {
     flex: 1;
-    /* justify-content: flex-start; */
 }
 
 .right {
     flex: 1;
-    /* justify-content: flex-end; */
-
 }
 
 .current_info.left {
@@ -241,10 +244,11 @@ input[type=password]:focus {
     background-color: white;
     border-radius: 25px;
     margin: 20px;
-    display: flex; /* Use flexbox for centering */
-    align-items: center; /* Center vertically */
+    display: flex; 
+    align-items: center; 
     text-align: left;
     padding-left: 15px;
+    width: 300px;
 }
 
 .current_info_left {
@@ -252,10 +256,12 @@ input[type=password]:focus {
     border-radius: 25px;
     margin: 20px;
     height: 30px;
-    display: flex; /* Use flexbox for centering */
+    display: flex; 
     align-items: center;
     text-align: left;
     padding-left: 15px;
+    width: 300px;
+
 }
 
 .addAmount {
@@ -308,11 +314,18 @@ input[type=password]:focus {
     margin: 4px 0;
     border: none;
     outline: none;
+    border-radius: 10px;
+}
+
+form > button {
+    color: white;
+    background-color: #DBB3B3;
 }
 
 .edit-form h3 {
     color: #fff;   
 }
+
 
 
 

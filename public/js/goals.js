@@ -8,7 +8,7 @@ async function outputPexelImage(query, imgEl) {
   }).then(response => response.json());
 
   if (photos.length) {
-    return imgEl.attr('src', photos[0].src.small);
+    return imgEl.attr('src', photos[0].src.medium);
   }
 
   imgEl.attr('src', 'https://placehold.co/600x400');

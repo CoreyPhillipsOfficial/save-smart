@@ -74,23 +74,7 @@ router.put('/editBalance/:goalId', isAuthenticated, authenticate, async (req, re
 
   res.redirect('/goals');
 
-  // const goal = await Goal.findOne({
-  //   where: { id: goalId, author_id: userId },
-  //   include: {
-  //     model: User,
-  //     as: 'author'
-  //   }
-  // });
 
-  // if (goal) {
-  //   res.render('editBalance', {
-  //     user: req.user,
-  //     goal: goal.get({ plain: true })
-  //   });
-  // } else {
-  //   // Handle the case where the post doesn't exist or doesn't belong to the user
-  //   res.status(404).send("Post not found or unauthorized to edit.");
-  // }
 });
 
 // Update a goal balance (POST)
@@ -117,25 +101,25 @@ router.put('/updateBalance/:goalId', isAuthenticated, authenticate, async (req, 
 });
 
 
-// router.delete('/deleteGoal/:goalId', isAuthenticated, authenticate, async (req, res) => {
-//   const goalId = req.params.goaltId;
-//   const userId = req.user.id;
+router.delete('/deleteGoal/:goalId', isAuthenticated, authenticate, async (req, res) => {
+  const goalId = req.params.goaltId;
+  const userId = req.user.id;
 
-//   // Verify that the goal belongs to the user before deleting
-//   const goal = await Goal.findOne({
-//     where: { id: goalId, author_id: userId }
-//   });
+  // Verify that the goal belongs to the user before deleting
+  const goal = await Goal.findOne({
+    where: { id: goalId, author_id: userId }
+  });
 
-//   if (goal) {
-//     // Delete the goal
-//     await goal.destroy();
+  if (goal) {
+    // Delete the goal
+    await goal.destroy();
 
-//     // Redirect to a different page or send a response as needed
-//     res.redirect('/dashboard');
-//   } else {
-//     res.status(404).send("Goal not found or unauthorized to delete.");
-//   }
-// });
+    // Redirect to a different page or send a response as needed
+    res.redirect('/dashboard');
+  } else {
+    res.status(404).send("Goal not found or unauthorized to delete.");
+  }
+});
 
 
 
