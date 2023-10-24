@@ -45,6 +45,30 @@ router.post('/goals', isAuthenticated, authenticate, async (req, res) => {
   })
 
 
+  // Update current amount by adding more to savings
+  router.put('/updateCurrentAmount/:goalId', isAuthenticated, authenticate, async (req, res) => {
+    const goalId = req.params.goalId;
+    const userId = req.user.id;
+    const amountToAdd = parseInt(req.body.amountToAdd);
+  
+    // Verify that the goal belongs to the user before updating
+    const goal = await Goal.findOne({
+      where: { id: goalId, author_id: userId }
+    });
+  
+    if (goal) {
+      // Update the currentAmount by adding the amountToAdd
+      goal.currentAmount += amountToAdd;
+      await goal.save();
+  
+      // Redirect to a different page or send a response as needed
+      res.redirect('/goals');
+    } else {
+      res.status(404).send("Goal not found or unauthorized to edit.");
+    }
+  });
+
+
 module.exports = router;
 
 // // Edit a post
