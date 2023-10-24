@@ -24,7 +24,7 @@ header {
 
 .title-container {
     flex: 1;
-    text-align: center; 
+    text-align: center;
     display: flex;
     justify-content: center;
     /* align-items: center; */
@@ -66,23 +66,25 @@ body {
     background-image: url(/assets/hero-background.jpg);
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    overflow: hidden;
+    /* background-repeat: no-repeat; */
 }
 
 .hero_text_container {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    align-items: flex-end; /* Right-align the content */
+    align-items: flex-end;
+    /* Right-align the content */
     /* height: 100vh; */
-    padding: 0 16px; /* Add padding for spacing */
+    padding: 0 16px;
+    /* Add padding for spacing */
 }
 
 .text-wrapper {
     width: 650px;
     padding-top: 100px;
-    margin-right: 0; /* Remove the right margin to push the text to the right */
+    margin-right: 0;
+    /* Remove the right margin to push the text to the right */
 }
 
 
@@ -91,17 +93,18 @@ body {
     color: black;
     margin-bottom: 10px;
     font-size: 30px;
-  }
-
-.container {
-  width: 630px;
-  padding-top: 100px;
-  margin: 0 auto;
-  text-align: center;
-  /* background-color: ; */
 }
 
-input[type=text], input[type=password]{
+.container {
+    width: 630px;
+    padding-top: 100px;
+    margin: 0 auto;
+    text-align: center;
+    /* background-color: ; */
+}
+
+input[type=text],
+input[type=password] {
     width: 600px;
     padding: 15px;
     margin: 5px 0 22px 0;
@@ -109,7 +112,7 @@ input[type=text], input[type=password]{
     border: none;
     border-radius: 20px;
     background: white;
-} 
+}
 
 .form-btn {
     background-color: black;
@@ -124,7 +127,8 @@ input[type=text], input[type=password]{
     font-size: 20px;
 }
 
-input[type=text]:focus, input[type=password]:focus{
+input[type=text]:focus,
+input[type=password]:focus {
     background-color: #ddd;
 }
 
@@ -135,7 +139,7 @@ input[type=text]:focus, input[type=password]:focus{
 
 .goals_wrap {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -147,28 +151,36 @@ input[type=text]:focus, input[type=password]:focus{
     text-decoration: underline;
 }
 
+.no_goals_form_wrap {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
 
-/* .current_goal {
-    margin-top: 5px;
+.no_goals_form {
+    margin-top: 10px;
     background-color: #C68989;
     height: 600px;
     width: 1000px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    border-radius: 25px; */
-/* } */
+    border-radius: 25px;
 
-    .current_goal {
-        background-color: #f3f4bd;
-        border-radius: 25px;
-        margin-top: 5px;
-        display: flex; 
-        flex-direction: row; 
-        justify-content: space-between; 
-        border-radius: 25px;
-    }
+}
+
+.current_goal {
+    background-color: #C68989;
+    border-radius: 25px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 25px;
+}
 
 
 .current_goal h2 {
@@ -198,7 +210,7 @@ input[type=text]:focus, input[type=password]:focus{
 .goal_view_wrap {
     width: 400px;
     height: 500px;
-    background-color: #D2D0A0;
+    background-color: #e78a8a;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -208,10 +220,20 @@ input[type=text]:focus, input[type=password]:focus{
 
 .left {
     flex: 1;
+    /* justify-content: flex-start; */
 }
 
 .right {
     flex: 1;
+    /* justify-content: flex-end; */
+
+}
+
+.current_info.left {
+    text-align: left;
+}
+
+.current_info.right {
     text-align: right;
 }
 
@@ -219,12 +241,56 @@ input[type=text]:focus, input[type=password]:focus{
     background-color: white;
     border-radius: 25px;
     margin: 20px;
+    display: flex; /* Use flexbox for centering */
+    align-items: center; /* Center vertically */
+    text-align: left;
+    padding-left: 15px;
 }
 
-.addAdmount {
-    display: flex !important;
-    
+.current_info_left {
+    background-color: white;
+    border-radius: 25px;
+    margin: 20px;
+    height: 30px;
+    display: flex; /* Use flexbox for centering */
+    align-items: center;
+    text-align: left;
+    padding-left: 15px;
 }
-#amountToAdd {
-    width: 300px;
+
+.addAmount {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.amountToAdd {
+    width: 280px !important;
+    padding: 15px !important;
+    border: none !important;
+    border-radius: 20px !important;
+    font-style: italic !important;
+    margin: 0 !important;
+}
+
+.addAmount button {
+    height: 45px;
+    background-color: black;
+    color: #DBB3B3;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.goal_view_wrap > h2 {
+    text-decoration: underline;
+    margin-top: 12px;
+    font-weight: 500;
+}
+
+.goal_view_wrap > p {
+    margin-bottom: 15px;
 }
