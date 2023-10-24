@@ -1,26 +1,47 @@
-<div class="goals_wrap">
-    <h2 class="goals_title">Your Goals:</h2>
 
     {{#if goals}}
+        {{#each goals}}
 
-    <div class="current_goal">
-        <h2 class="no_goals_title">No Goals Yet*</h2>
-        
-    </div>
+<div class="goals_wrap">
+      <h2 class="goals_title">Your Goals:</h2>
+      <div class="current_goal">
+         <div class="goal_view_wrap">
+            <div>
+               <p class="current_info">Current Balance: {{this.currentAmount}}</p>
+            </div>
+            <div>
+               <p class="current_info">How much left:</p>
+            </div>
+            <div>
+               <input placeholder="How much would you like to add?" type="text">
+               <div>AddButtonImage</div>
+            </div>
+         </div>
+
+
+         <div class="goal_view_wrap">
+            <h2>(Future Name of Goal)*</h2>
+            <p>{{this.goalAmount}}</p>
+
+             {{/each}}
+          
+         </div>
+
+
+      </div>
+      <a href="/goals_form">
+         <button class="goals_button">Add a goal</button>
+      </a>
+
+   </div>
+
+       
     {{else}}
-
-    {{#each goals}}
-
-{{goalName}}
-{{goalAmount}}
-{{currentAmount}}
-
-
-{{/each}}
-    
-    <a href="/goals_form">
-        <button class="goals_button">Add a goal</button>
-    </a>
+        <div class="current_goal">
+            <h2 class="no_goals_title">No Goals Yet*</h2>
+        </div>
+        <a href="/goals_form">
+            <button class="goals_button">Add a goal</button>
+        </a>
+    {{/if}}
 </div>
-
-{{/if}}

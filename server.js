@@ -19,11 +19,13 @@ const PORT = process.env.PORT || 3001;
 // Create the server app
 const app = express();
 
+// this is how we need to send it when using handlebars since it sends the data through urlencoding
+app.use(express.urlencoded({extended: false}));
+
 // Open the static channel for our browser assets - ie. express.static on the public folder
 app.use(express.static('public'));
 
-// this is how we need to send it when using handlebars since it sends the data through urlencoding
-app.use(express.urlencoded({extended: false}));
+
 
 // Method Override Package to change Method in form
 app.use(methodOverride('_method'));
