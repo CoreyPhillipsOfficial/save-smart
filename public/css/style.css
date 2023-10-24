@@ -127,3 +127,59 @@ input[type=text], input[type=password]{
 input[type=text]:focus, input[type=password]:focus{
     background-color: #ddd;
 }
+
+.photo {
+    max-height: 200px;
+    max-width: 200px;
+}
+
+.goals_wrap {
+    text-align: center;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.goals_title {
+    font-size: 50px;
+    font-weight: 400;
+    text-decoration: underline;
+}
+
+
+.current_goal {
+    margin-top: 5px;
+    background-color: #C68989;
+    height: 600px;
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+}
+
+.current_goal h2 {
+    margin-top: 0;
+}
+
+.no_goals_title {
+    opacity: 0.2;
+    font-size: 125px;
+    font-weight: 100;
+    text-shadow: 2px 2px 4px rgba(102, 89, 89, 0.5);
+    font-style: italic;
+}
+
+.goals_button {
+    cursor: pointer;
+    font-size: 40px;
+    margin-top: 10px;
+    width: 350px;
+    height: 75px;
+    border-radius: 25px;
+    background-color: black;
+    color: #C68989;
+    border: none;
+}

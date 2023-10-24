@@ -1,23 +1,39 @@
-import { createClient } from 'pexels';
-
-const apiKey = 'dSBGzPie66IdXR0BGNdj8gmNKqI0ikHPBFYTcsKMOd7sVFTaA3Le7LEo';
-const client = createClient(apiKey);
-
 const searchPhotos = () => {
-    const query = 'car';
-
-    // document.getElementById('item').value;
-
-    client.photos.search({ query, per_page: 1 }).then(photos => {
-    const photo = photos[0];
-    const photoUrl = photo.src.original;
-    // Display the photo in your application
-  });
-};
+    const query = document.getElementById('item').value;;
+    // const query = 'car';
+    const itemElement = document.getElementById('item');
+  
+    fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=1`, {
+      headers: {
+        Authorization: 'dSBGzPie66IdXR0BGNdj8gmNKqI0ikHPBFYTcsKMOd7sVFTaA3Le7LEo'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        const photos = data.photos;
+        if (photos.length > 0) {
+          const photo = photos[0];
+          const photoUrl = photo.src.original;
+          if (itemElement) {
+            itemElement.src = photoUrl; // Update the src attribute
+          } else {
+            console.error("Element with ID 'item' not found in the HTML.");
+          }
+        } else {
+          console.error('No photos found for the query.');
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching photos:', error);
+      });
+  };
+  
+  // Call searchPhotos() when needed, e.g., in response to an event or page load
+//   searchPhotos();
 
 // Attach an event listener to the search button or form submission
 // Replace 'searchButton' with the ID or class of your search button or form
-document.getElementById('searchButton').addEventListener('click', searchPhotos);
+// document.getElementById('searchButton').addEventListener('click', searchPhotos);
 
 
 

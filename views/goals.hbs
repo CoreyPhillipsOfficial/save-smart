@@ -1,5 +1,31 @@
-<button>Add a goal</button>
+<div class="goals_wrap">
+    <h2 class="goals_title">Your Goals:</h2>
 
-<div>
-    <img id="item" alt="Item">
+    {{#if goals}}
+
+    <div class="current_goal">
+        <h2 class="no_goals_title">No Goals Yet*</h2>
+        
+    </div>
+    {{else}}
+
+    {{#each goals}}
+
+{{goalName}}
+{{goalAmount}}
+{{currentAmount}}
+
+
+{{/each}}
+
+
+
+    
+    <a href="/goals_form">
+        <button class="goals_button">Add a goal</button>
+    </a>
 </div>
+
+
+
+{{/if}}

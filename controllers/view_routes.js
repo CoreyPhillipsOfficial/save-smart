@@ -66,8 +66,18 @@ router.get('/login', isLoggedIn, authenticate, (req, res) => {
     req.session.errors = [];
   });
 
+
+
   router.get('/goals', isAuthenticated, authenticate, (req, res) => {
     res.render('goals', {
+      user: req.user
+    });
+  
+    req.session.errors = [];
+  });
+
+  router.get('/goals_form', isAuthenticated, authenticate, (req, res) => {
+    res.render('goals_form', {
       user: req.user
     });
   
