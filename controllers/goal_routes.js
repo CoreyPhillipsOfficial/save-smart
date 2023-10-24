@@ -32,11 +32,16 @@ async function authenticate(req, res, next) {
 router.post('/goals', isAuthenticated, authenticate, async (req, res) => {
 
   try {
+    const balance = req.body.goalAmount - req.body.currentAmount;
+    
+
+    req.body.balance = balance;
   const goal = await Goal.create(req.body);
   
   await req.user.addGoal(goal);
 
   res.redirect('/goals');
+  console.log(balance);
   } catch (error) {
    
     req.session.errors = error.errors.map(errObj => errObj.message);
@@ -45,78 +50,59 @@ router.post('/goals', isAuthenticated, authenticate, async (req, res) => {
   })
 
 
-  // Update current amount by adding more to savings
-  router.put('/updateCurrentAmount/:goalId', isAuthenticated, authenticate, async (req, res) => {
-    const goalId = req.params.goalId;
-    const userId = req.user.id;
-    const amountToAdd = parseInt(req.body.amountToAdd);
-  
-    // Verify that the goal belongs to the user before updating
-    const goal = await Goal.findOne({
-      where: { id: goalId, author_id: userId }
-    });
-  
-    if (goal) {
-      // Update the currentAmount by adding the amountToAdd
-      goal.currentAmount += amountToAdd;
-      await goal.save();
-  
-      // Redirect to a different page or send a response as needed
-      res.redirect('/goals');
-    } else {
-      res.status(404).send("Goal not found or unauthorized to edit.");
+
+
+
+
+
+// Edit a post
+router.get('/editBalance/:goalId', isAuthenticated, authenticate, async (req, res) => {
+  const goalId = req.params.goalId;
+  const userId = req.user.id; // Get the current user's ID
+
+  // Find the specific post that matches the provided postId and belongs to the current user
+  const goal = await Goal.findOne({
+    where: { id: goalId, author_id: userId },
+    include: {
+      model: User,
+      as: 'author'
     }
   });
 
+  if (goal) {
+    res.render('editBalance', {
+      user: req.user,
+      goal: goal.get({ plain: true })
+    });
+  } else {
+    // Handle the case where the post doesn't exist or doesn't belong to the user
+    res.status(404).send("Post not found or unauthorized to edit.");
+  }
+});
 
-module.exports = router;
+// Update a goal balance (POST)
+router.put('/updateBalance/:goalId', isAuthenticated, authenticate, async (req, res) => {
+  const goalId = req.params.goalId;
+  const userId = req.user.id;
+  const addMoney = req.body;
 
-// // Edit a post
-// router.get('/editGoal/:goalId', isAuthenticated, authenticate, async (req, res) => {
-//   const goalId = req.params.goalId;
-//   const userId = req.user.id; // Get the current user's ID
+  // Verify that the goal belongs to the user before updating
+  const goal = await Goal.findOne({
+    where: { id: goalId, author_id: userId }
+  });
 
-//   // Find the specific post that matches the provided postId and belongs to the current user
-//   const goal = await Goal.findOne({
-//     where: { id: goalId, author_id: userId },
-//     include: {
-//       model: User,
-//       as: 'author'
-//     }
-//   });
+  if (goal) {
+    // Update the goal
+    newBalance = balance + addMoney;
+    await post.update({balance: newBalance});
 
-//   if (goal) {
-//     res.render('editGoal', {
-//       user: req.user,
-//       post: post.get({ plain: true })
-//     });
-//   } else {
-//     // Handle the case where the post doesn't exist or doesn't belong to the user
-//     res.status(404).send("Post not found or unauthorized to edit.");
-//   }
-// });
+    // Redirect to a different page or send a response as needed
+    res.redirect('/');
+  } else {
+    res.status(404).send("Post not found or unauthorized to edit.");
+  }
+});
 
-// // Update a goal
-// router.put('/updateGoal/:goalId', isAuthenticated, authenticate, async (req, res) => {
-//   const goalId = req.params.goalId;
-//   const userId = req.user.id;
-//   const { title, content } = req.body;
-
-//   // Verify that the goal belongs to the user before updating
-//   const goal = await Goal.findOne({
-//     where: { id: goalId, author_id: userId }
-//   });
-
-//   if (goal) {
-//     // Update the goal
-//     await goal.update({ title, content });
-
-//     // Redirect to a different page or send a response as needed
-//     res.redirect('/');
-//   } else {
-//     res.status(404).send("Goal not found or unauthorized to edit.");
-//   }
-// });
 
 // router.delete('/deleteGoal/:goalId', isAuthenticated, authenticate, async (req, res) => {
 //   const goalId = req.params.goaltId;
@@ -142,4 +128,4 @@ module.exports = router;
 
 
 
-// module.exports = router;
+module.exports = router;

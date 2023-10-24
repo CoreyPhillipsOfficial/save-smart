@@ -2,6 +2,10 @@
 
  <div class="container">
 
+  {{#each errors}}
+    <p class="text-center error">{{this}}</p>
+    {{/each}}
+
     <input class="form-email" type="text" name="username" placeholder="Please enter your username" required>
     <input class="form-pass" type="password" name="password" placeholder="Please enter your password" required>
     <button class="form-btn">Register</button>

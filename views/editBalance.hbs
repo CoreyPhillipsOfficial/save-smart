@@ -1,0 +1,35 @@
+<a href="/">
+  <div id="logo" class="lightBackground">
+    <h2 class="darkText">The Tech Blog</h2>
+  </div>
+</a>
+</nav>
+</header>
+<div class="form-container">
+<form action="/updatePost/{{post.id}}?_method=PUT" method="POST" class="post flexC">
+  <div class="formHeader lightText darkBackground flexH">
+    <h4>Edit Post</h4>
+
+  </div>
+  <div class="formFields">
+
+     {{#each errors}}
+    <p class="text-center error">{{this}}</p>
+    {{/each}}
+
+
+    <div class="flexC">
+      <label for="Balance" class="labelText darkText">Balance</label>
+      <input class="formInput blueBorder" type="text" id="title" name="balance" required value ="{{this.balance}}">
+    </div>
+  
+    <div class="flexC">
+      <button id="update" type="submit" class="formButton">Update</button>
+    </div>
+    <div class="flexC">
+      <button id="delete" type="submit" class="formButton" formaction="/deletePost/{{post.id}}?_method=DELETE">Delete</button>
+    </div>
+  
+  </div>
+</form>
+</div>

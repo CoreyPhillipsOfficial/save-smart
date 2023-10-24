@@ -18,17 +18,23 @@ Goal.init({
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+  // Define the virtual column for balance
+  balance: {
+    type: DataTypes.VIRTUAL,
+    get() {
+      // Calculate the balance as the difference between goalAmount and currentAmount
+      return this.getDataValue('goalAmount') - this.getDataValue('currentAmount');
+    },
+  },
   date: {
     type: DataTypes.VIRTUAL,
     get() {
-    
-      return dayjs(this.createdAt).format('MM/DD/YYYY')
-    }
-  }
+      return dayjs(this.createdAt).format('MM/DD/YYYY');
+    },
+  },
 }, {
   modelName: 'goal',
-  sequelize: db
+  sequelize: db,
 });
-
 
 module.exports = Goal;
