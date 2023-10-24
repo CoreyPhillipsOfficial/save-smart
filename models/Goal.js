@@ -21,6 +21,7 @@ Goal.init({
   date: {
     type: DataTypes.VIRTUAL,
     get() {
+    
       return dayjs(this.createdAt).format('MM/DD/YYYY')
     }
   }

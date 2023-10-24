@@ -1,4 +1,63 @@
 
+{{#if goals}}
+  {{#each goals}}
+    <div class="goals_wrap">
+      <h2 class="goals_title">Your Goals:</h2>
+      <div class="current_goal">
+        <div class="goal_view_wrap">
+          <div>
+            <p class="current_info">Current Balance: {{this.currentAmount}}</p>
+          </div>
+          <div>
+            <p id="difference" class="current_info how_much_left">{{this.goalAmount}}</p>
+          </div>
+          <section class="addAmount">
+            <input type="text" id="amountToAdd" placeholder="How much would you like to add?">
+            <a href="">
+            <button>Add</button>
+            </a>
+            </section>
+         </div>
+
+        <div class="goal_view_wrap">
+          <h2>{{this.goalName}}</h2>
+          <img id="item" class="photo" alt="Item" src="">
+          <p>{{this.goalAmount}}</p>
+        </div>
+      </div>
+    </div>
+      <a href="/goals_form">
+    <button class="goals_button">Add a goal</button>
+  </a>
+  {{/each}}
+{{else}}
+  <div class="current_goal">
+    <h2 class="no_goals_title">No Goals Yet*</h2>
+  </div>
+  <a href="/goals_form">
+    <button class="goals_button">Add a goal</button>
+  </a>
+{{/if}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!-- 
     {{#if goals}}
         {{#each goals}}
 
@@ -10,17 +69,18 @@
                <p class="current_info">Current Balance: {{this.currentAmount}}</p>
             </div>
             <div>
-               <p class="current_info">How much left:</p>
+               <p id="difference" class="current_info how_much_left">How much left:{{this.goalAmount}}</p>
             </div>
-            <div>
-               <input placeholder="How much would you like to add?" type="text">
-               <div>AddButtonImage</div>
-            </div>
+<form id="addAmountForm">
+   <input type="text" id="amountToAdd" placeholder="How much would you like to add?">
+   <button type="submit">Add</button>
+</form>
          </div>
 
 
          <div class="goal_view_wrap">
-            <h2>(Future Name of Goal)*</h2>
+            <h2>{{this.goalName}}</h2>
+            <img id="item" class="photo" alt="Item" src="">
             <p>{{this.goalAmount}}</p>
 
              {{/each}}
@@ -44,4 +104,4 @@
             <button class="goals_button">Add a goal</button>
         </a>
     {{/if}}
-</div>
+</div> --}}

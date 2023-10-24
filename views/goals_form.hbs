@@ -1,4 +1,4 @@
-<form action="/goals" method="POST">
+<form id="form" action="/goals" method="POST">
 
   <div class="container">
 
@@ -6,9 +6,9 @@
     <p class="error">{{this}}</p>
     {{/each}}
 
-    <input class="form-email" type="text" name="goalName" placeholder="Please enter your Goal Name" required>
+    <input id="goal" class="form-email" type="text" name="goalName" placeholder="Please enter your Goal Name" required>
     <input class="form-pass" type="text" name="goalAmount" placeholder="Please enter your Goal Amount" required>
     <input class="form-pass" type="text" name="currentAmount" placeholder="How much do you have saved up right now?" required>
-    <button type="submit" class="form-btn">Create Goal</button>
+    <button type="submit" id="submit-button" class="form-btn">Create Goal</button>
   </div>
   </form>

@@ -36,7 +36,7 @@ h1 {
     font-size: 50px;
     margin: 0;
     /* padding: 0; */
-    margin-left: 225px;
+    margin-left: 130px;
 }
 
 nav {
@@ -148,7 +148,7 @@ input[type=text]:focus, input[type=password]:focus{
 }
 
 
-.current_goal {
+/* .current_goal {
     margin-top: 5px;
     background-color: #C68989;
     height: 600px;
@@ -157,8 +157,19 @@ input[type=text]:focus, input[type=password]:focus{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 25px;
-}
+    border-radius: 25px; */
+/* } */
+
+    .current_goal {
+        background-color: #f3f4bd;
+        border-radius: 25px;
+        margin-top: 5px;
+        display: flex; 
+        flex-direction: row; 
+        justify-content: space-between; 
+        border-radius: 25px;
+    }
+
 
 .current_goal h2 {
     margin-top: 0;
@@ -187,9 +198,10 @@ input[type=text]:focus, input[type=password]:focus{
 .goal_view_wrap {
     width: 400px;
     height: 500px;
-    background-color: #7c5454;
+    background-color: #D2D0A0;
     display: flex;
-    display: inline;
+    flex-direction: column;
+    justify-content: space-between;
     border-radius: 25px;
     margin: 50px;
 }
@@ -204,7 +216,15 @@ input[type=text]:focus, input[type=password]:focus{
 }
 
 .current_info {
-    background-color: aqua;
+    background-color: white;
     border-radius: 25px;
-    padding: 10px;
+    margin: 20px;
+}
+
+.addAdmount {
+    display: flex !important;
+    
+}
+#amountToAdd {
+    width: 300px;
 }
