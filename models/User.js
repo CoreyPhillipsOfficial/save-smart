@@ -4,10 +4,12 @@ const db = require('../config/connection');
 
 const { hash, compare } = require('bcrypt');
 
+const Goal = require('./Goal.js');
+
 // Create a User class and extend the Model class
 class User extends Model { };
 
-const Goal = require('./Goal.js');
+
 
 // Call User.init and setup a couple columns/fields - username & password as text strings
 User.init({

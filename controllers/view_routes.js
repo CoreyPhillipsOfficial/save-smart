@@ -1,6 +1,7 @@
 // Create an express router instance object
 const router = require('express').Router();
 const User = require('../models/User');
+const Goal = require('../models/Goal');
 
 
 // block an auth page if user is already logged in
@@ -67,16 +68,7 @@ router.get('/login', isLoggedIn, authenticate, (req, res) => {
   });
 
 
-
-  router.get('/goals', isAuthenticated, authenticate, (req, res) => {
-    res.render('goals', {
-      user: req.user
-    });
-  
-    req.session.errors = [];
-  });
-
-  router.get('/goals_form', isAuthenticated, authenticate, (req, res) => {
+router.get('/goals_form', isAuthenticated, authenticate, (req, res) => {
     res.render('goals_form', {
       user: req.user
     });
@@ -84,7 +76,26 @@ router.get('/login', isLoggedIn, authenticate, (req, res) => {
     req.session.errors = [];
   });
 
-  
+  // View Goal Page
+router.get('/goals', isAuthenticated, authenticate, async (req, res) => {
+  const userId = req.user.id; // Get the current user's ID
+
+  const goals = await Goal.findAll({
+    where: { author_id: userId }, // Use the actual column name that links goals to users
+    include: {
+      model: User,
+      as: 'author'
+      
+    }
+  });
+
+  res.render('goals', {
+    user: req.user,
+    goals: goals.map(p => p.get({ plain: true }))
+  });
+});
+
+ 
 
 
 // Export the router
